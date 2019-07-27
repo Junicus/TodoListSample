@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Header = ({ leftActions, title }) => {
+export const Header = ({ leftActions, rightActions, title }) => {
   return (
     <div
       style={{
@@ -13,7 +13,7 @@ export const Header = ({ leftActions, title }) => {
     >
       {leftActions}
       <span style={{ flexGrow: 1 }}>{title}</span>
-      <button>Add</button>
+      {rightActions}
     </div>
   );
 };

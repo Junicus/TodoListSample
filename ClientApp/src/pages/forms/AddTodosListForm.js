@@ -1,0 +1,39 @@
+import React, { useState } from "react";
+
+export const AddTodosListForm = ({ initialValues, onAdd }) => {
+  const [values, setValues] = useState(initialValues);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setValues({ ...values, [name]: value });
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    onAdd(values);
+  };
+
+  return (
+    <form>
+      <div>
+        <label>Title</label>
+        <input
+          type="text"
+          name="title"
+          value={values.title}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label>Initial</label>
+        <input
+          type="text"
+          name="initial"
+          value={values.initial}
+          onChange={handleChange}
+        />
+      </div>
+      <button onClick={handleSubmit}>Add Todos</button>
+    </form>
+  );
+};

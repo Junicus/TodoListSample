@@ -2,7 +2,17 @@ import React from "react";
 import { TodosContext } from "../context/TodosContext";
 
 export const useTodos = () => {
-  const todosContext = React.useContext(TodosContext);
+  const [todosContext, dispatch] = React.useContext(TodosContext);
 
-  return [todosContext];
+  const addTodos = (title, initial) => {
+    dispatch({
+      type: "@@todos/ADD_TODOS",
+      payload: {
+        title,
+        initial
+      }
+    });
+  };
+
+  return [todosContext, { addTodos }];
 };
